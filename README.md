@@ -160,4 +160,4 @@ Built as a portfolio project to demonstrate applied knowledge of:
 - Derivatives pricing (Black-Scholes) and risk sensitivities (Greeks)
 - Stress testing methodology used in post-trade market infrastructure
 
-**Author:** Athul | MSc International Business (Financial Markets), Hochschule Mainz | CFA Level 1
+**Author:** Athul | MSc International Business | CFA Level 1
