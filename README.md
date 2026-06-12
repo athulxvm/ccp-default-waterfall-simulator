@@ -6,9 +6,9 @@ A Python simulation of a Central Counterparty (CCP) default management framework
 
 ## Motivation
 
-When a Clearing Member defaults, a CCP like Eurex Clearing must absorb the resulting market losses in a defined, legally structured sequence. This project simulates that process end-to-end: from pricing a realistic derivatives portfolio, computing stress losses under multiple shock scenarios, and stepping through the default waterfall layer by layer.
+When a Clearing Member defaults, a CCP must absorb the resulting market losses in a defined, legally structured sequence. This project simulates that process end-to-end: from pricing a realistic derivatives portfolio, computing stress losses under multiple shock scenarios, and stepping through the default waterfall layer by layer.
 
-The project is inspired by the Credit Risk & Default Management function at Eurex Clearing, where the core mandate is precisely this — maintaining operational readiness to liquidate a defaulted member's portfolio swiftly and safely.
+The project is to understand the Default Management function at CCP, where the core mandate is precisely this — maintaining operational readiness to liquidate a defaulted member's portfolio swiftly and safely.
 
 ---
 
