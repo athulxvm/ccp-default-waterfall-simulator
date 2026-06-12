@@ -92,7 +92,7 @@ Four scenarios are run against the same portfolio:
 ##############################################################
 
 ══════════════════════════════════════════════════════════════
-  CCP DEFAULT WATERFALL SIMULATOR — Eurex Clearing AG (Simulated)
+  CCP DEFAULT WATERFALL SIMULATOR — (Simulated)
 ══════════════════════════════════════════════════════════════
 
   Member : Alpha Bank AG (Clearing Member)
