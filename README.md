@@ -108,12 +108,12 @@ Four scenarios are run against the same portfolio:
     Absorbed   : EUR  45,000,000.00
     Status     : ✘  SHORTFALL: EUR 47,950,437.60
 
-  STEP 2: CCP Skin-in-the-Game (SitG)
+  STEP 2: Defaulted Member's Default Fund Contribution
     Available  : EUR  10,000,000.00
     Absorbed   : EUR  10,000,000.00
     Status     : ✘  SHORTFALL: EUR 37,950,437.60
 
-  STEP 3: Defaulted Member's Default Fund Contribution
+  STEP 3: CCP Skin-in-the-Game (SitG)
     Available  : EUR  12,000,000.00
     Absorbed   : EUR  12,000,000.00
     Status     : ✘  SHORTFALL: EUR 25,950,437.60
