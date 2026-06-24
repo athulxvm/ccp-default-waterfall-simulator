@@ -200,7 +200,7 @@ class CCPWaterfall:
             self._print_footer(gross_loss, 0)
             return
 
-        # Step 2: CCP Skin-in-the-Game
+        # Step 2: Defaulted Member's Default Fund Contribution
         step += 1
         sitg_used = min(remaining, self.skin_in_the_game)
         remaining -= sitg_used
@@ -214,7 +214,7 @@ class CCPWaterfall:
             self._print_footer(gross_loss, 0)
             return
 
-        # Step 3: Defaulted Member's Default Fund Contribution
+        # Step 3: CCP Skin-in-the-Game
         step += 1
         dfc_used = min(remaining, defaulted_member.default_fund_contribution)
         remaining -= dfc_used
