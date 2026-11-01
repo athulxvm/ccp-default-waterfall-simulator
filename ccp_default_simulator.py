@@ -3,7 +3,8 @@ CCP Default Waterfall Simulator
 ================================
 Simulates the default of a Clearing Member at a Central Counterparty (CCP).
 Models a simple derivatives portfolio, computes stress losses, and steps through
-the default waterfall: Initial Margin → Default Fund → Skin-in-the-Game → Mutualized Fund.
+the default waterfall: Initial Margin → Defaulter's Default Fund Contribution → CCP Skin-in-the-Game →
+Mutualized Default Fund (other members). Assessments, second skin-in-the-game and recovery tools are not modelled.
 
 Author: Athul
 Reference: Eurex Clearing default management framework
@@ -201,20 +202,7 @@ class CCPWaterfall:
             return
 
         # Step 2: Defaulted Member's Default Fund Contribution
-        step += 1
-        sitg_used = min(remaining, self.skin_in_the_game)
-        remaining -= sitg_used
-        covered = "✔  FULLY COVERED" if remaining == 0 else f"✘  SHORTFALL: EUR {remaining:,.2f}"
-        print(f"\n  STEP {step}: CCP Skin-in-the-Game (SitG)")
-        print(f"    Available  : EUR {self.skin_in_the_game:>14,.2f}")
-        print(f"    Absorbed   : EUR {sitg_used:>14,.2f}")
-        print(f"    Status     : {covered}")
-
-        if remaining == 0:
-            self._print_footer(gross_loss, 0)
-            return
-
-        # Step 3: CCP Skin-in-the-Game
+        # (the defaulter's own resources are used before the CCP's own capital)
         step += 1
         dfc_used = min(remaining, defaulted_member.default_fund_contribution)
         remaining -= dfc_used
@@ -222,6 +210,20 @@ class CCPWaterfall:
         print(f"\n  STEP {step}: Defaulted Member's Default Fund Contribution")
         print(f"    Available  : EUR {defaulted_member.default_fund_contribution:>14,.2f}")
         print(f"    Absorbed   : EUR {dfc_used:>14,.2f}")
+        print(f"    Status     : {covered}")
+
+        if remaining == 0:
+            self._print_footer(gross_loss, 0)
+            return
+
+        # Step 3: CCP Skin-in-the-Game (the CCP's own dedicated capital)
+        step += 1
+        sitg_used = min(remaining, self.skin_in_the_game)
+        remaining -= sitg_used
+        covered = "✔  FULLY COVERED" if remaining == 0 else f"✘  SHORTFALL: EUR {remaining:,.2f}"
+        print(f"\n  STEP {step}: CCP Skin-in-the-Game (SitG)")
+        print(f"    Available  : EUR {self.skin_in_the_game:>14,.2f}")
+        print(f"    Absorbed   : EUR {sitg_used:>14,.2f}")
         print(f"    Status     : {covered}")
 
         if remaining == 0:
